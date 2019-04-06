@@ -1,0 +1,23 @@
+{
+  "name": "tapit-rpi-client",
+  "version": "1.0.0",
+  "description": "Client app for RPi to communicate with tapit-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylemontague/tapit-rpi-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylemontague/tapit-rpi-client/issues"
+  },
+  "homepage": "https://github.com/kylemontague/tapit-rpi-client#readme",
+  "dependencies": {
+    "rpi-gpio": "^2.1.3"
+  }
+}
