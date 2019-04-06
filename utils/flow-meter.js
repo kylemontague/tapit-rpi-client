@@ -10,9 +10,8 @@ gpio.on('change', function(channel, value){
 
 const timeout = setTimeout(() => {
     console.log('tap timeout');
-  },2000);
+  },2000).unref();
 
-clearTimeout(timeout)
 
 let TAP_CHANNELS = []
 let ROTATIONS = {}
