@@ -1,4 +1,5 @@
 const gpio = require('rpi-gpio')
+let gpiop = gpio.promise;
 
 
 
@@ -13,10 +14,10 @@ function init(channels = []){
 }
 
 function reset(){
-    gpio.destroy()
     //initialize the flow meters. 
     for(channel of TAP_CHANNELS){
-        gpio.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
+        console.log('setting up pin:'+channel)
+        gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
             .then(() => {
                 console.log(`${channel} setup`)
             })
