@@ -2,7 +2,7 @@ const gpio = require('rpi-gpio')
 
 
 
-const TAP_CHANNELS = []
+let TAP_CHANNELS = []
 const ROTATIONS = {}
 let ROTATION_VOLUME = 10 //10ml
 
