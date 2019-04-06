@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/kylemontague/tapit-rpi-client#readme",
   "dependencies": {
+    "node-googlehome": "0.0.7",
+    "rest-request": "^1.0.12",
     "rpi-gpio": "^2.1.3"
   }
 }
