@@ -2,11 +2,12 @@ const gpio = require('rpi-gpio')
 let gpiop = gpio.promise;
 
 gpio.on('change', function(channel, value){
-    console.log(`channel: ${channel}, value: ${value}`)
+    incrementTap(channel)
+
 });
 
 let TAP_CHANNELS = []
-const ROTATIONS = {}
+let ROTATIONS = {}
 let ROTATION_VOLUME = 10 //10ml
 
 function init(channels = []){
@@ -67,6 +68,10 @@ function setTap(channel,rotations = 0){
     ROTATIONS.channel = rotations
 }
 
+function incrementTap(channel){
+    ROTATIONS.channel += 1
+    console.log(ROTATIONS.channel)
+}
 
 module.exports = {
     init,
