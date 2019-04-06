@@ -1,7 +1,9 @@
 const gpio = require('rpi-gpio')
 let gpiop = gpio.promise;
 
-
+gpio.on('change', function(channel, value){
+    console.log(`channel: ${channel}, value: ${value}`)
+});
 
 let TAP_CHANNELS = []
 const ROTATIONS = {}
@@ -17,7 +19,7 @@ function reset(){
     //initialize the flow meters. 
     for(channel of TAP_CHANNELS){
         console.log('setting up pin:'+channel)
-        gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
+        gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_BOTH)
             .then(() => {
                 console.log(`${channel} setup`)
             })
@@ -26,13 +28,6 @@ function reset(){
             })
         resetTap(channel) // initialize the tap rotation counter
     }
-
-    //register an on `change` listener for the taps
-    gpio.on('change', function(channel, value){
-        console.log(`channel: ${channel}, value: ${value}`)
-    });
-
-    
 }
 
 /**
