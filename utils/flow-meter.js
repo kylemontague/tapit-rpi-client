@@ -3,12 +3,13 @@ let gpiop = gpio.promise;
 
 gpio.on('change', function(channel, value){
     incrementTap(channel)
+    printVolume(channel)
 
 });
 
 let TAP_CHANNELS = []
 let ROTATIONS = {}
-let ROTATION_VOLUME = 10 //10ml
+let ROTATION_VOLUME = 0.2 //10ml
 
 function init(channels = []){
     TAP_CHANNELS = channels
@@ -70,7 +71,10 @@ function setTap(channel,rotations = 0){
 
 function incrementTap(channel){
     ROTATIONS.channel += 1
-    console.log(ROTATIONS.channel)
+}
+
+function printVolume(channel){
+    console.log(ROTATIONS.channel * ROTATION_VOLUME+ "ml")
 }
 
 module.exports = {
