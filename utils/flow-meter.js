@@ -1,16 +1,21 @@
 const gpio = require('rpi-gpio')
 let gpiop = gpio.promise;
 
+let timeout = setTimeout(() => {
+    console.log('init');
+  },500)
+
 gpio.on('change', function(channel, value){
-    timeout.refresh()
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+        printVolume(channel)
+        console.log('tap timeout');
+    },2000)
     incrementTap(channel)
-    printVolume(channel)
 });
 
 
-const timeout = setTimeout(() => {
-    console.log('tap timeout');
-  },2000).unref();
+
 
 
 let TAP_CHANNELS = []
