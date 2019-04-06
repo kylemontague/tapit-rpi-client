@@ -1,7 +1,7 @@
 const gpio = require('rpi-gpio')
 
 const events = require('events');
-let flowEmitter = new events.EventEmitter();
+let emitter = new events.EventEmitter();
 
 
 let gpiop = gpio.promise;
@@ -100,5 +100,5 @@ module.exports = {
     setTap,
     resetTap,
     calculateVolume,
-    emitter:flowEmitter,
+    emitter,
 }
