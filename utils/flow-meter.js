@@ -1,4 +1,9 @@
 const gpio = require('rpi-gpio')
+
+const events = require('events');
+let flowEmitter = new events.EventEmitter();
+
+
 let gpiop = gpio.promise;
 
 
@@ -12,7 +17,7 @@ gpio.on('change', function(channel, value){
     clearTimeout(TIMERS.channel)
     TIMERS.channel = setTimeout(() => {
         console.log(`tap ${channel}`);
-        printVolume(channel)
+        emitter.emit("served",{tap:channel,volume:getVolume(channel)})
     },TIMEOUT)
     incrementTap(channel)
 });
@@ -84,8 +89,8 @@ function incrementTap(channel){
     ROTATIONS.channel += 1
 }
 
-function printVolume(channel){
-    console.log(ROTATIONS.channel * ROTATION_VOLUME+ "ml")
+function getVolume(channel){
+    return ROTATIONS.channel * ROTATION_VOLUME
 }
 
 module.exports = {
@@ -94,5 +99,6 @@ module.exports = {
     setVPR,
     setTap,
     resetTap,
-    calculateVolume
+    calculateVolume,
+    emitter:flowEmitter,
 }
