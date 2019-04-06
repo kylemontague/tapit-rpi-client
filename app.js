@@ -9,8 +9,8 @@ const TAP_CHANNELS = [TAP_1_CHANNEL]
 
 function initTaps(){
     flow.init(TAP_CHANNELS)
-    flow.emitter.on("served",(tap,volume) =>{
-        console.log(`tap:${tap}, volume:${volume}`)
+    flow.emitter.on("served",(data) =>{
+        console.log(`tap:${data.tap}, volume:${data.volume}`)
     })
 }
 
