@@ -1,5 +1,4 @@
 const flow = require('./utils/flow-meter')
-const tapModel = db.tap
 
 const TAP_1_CHANNEL = 3
 const TAP_2_CHANNEL = 4
