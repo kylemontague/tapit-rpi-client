@@ -12,9 +12,7 @@ const timeout = setTimeout(() => {
     console.log('tap timeout');
   },2000);
 
-setImmediate(() => {
-    timeout.unref()
-});
+clearTimeout(timeout)
 
 let TAP_CHANNELS = []
 let ROTATIONS = {}
