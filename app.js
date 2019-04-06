@@ -12,6 +12,10 @@ function initTaps(){
     flow.emitter.on("served",(data) =>{
         console.log(`tap:${data.tap}, volume:${data.volume}`)
     })
+
+    flow.emitter.on("serving",(data) =>{
+        console.log(`tap:${data.tap}, volume:${data.volume}`)
+    })
 }
 
 initTaps()

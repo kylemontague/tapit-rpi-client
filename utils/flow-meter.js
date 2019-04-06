@@ -20,6 +20,8 @@ gpio.on('change', function(channel, value){
         emitter.emit("served",{tap:channel,volume:getVolume(channel)})
     },TIMEOUT)
     incrementTap(channel)
+    emitter.emit("serving",{tap:channel,volume:getVolume(channel)})
+
 });
 
 
