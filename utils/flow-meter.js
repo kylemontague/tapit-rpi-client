@@ -8,6 +8,7 @@ let ROTATION_VOLUME = 10 //10ml
 
 function init(channels = []){
     TAP_CHANNELS = channels
+    console.log(TAP_CHANNELS)
     reset()
 }
 
