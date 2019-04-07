@@ -1,5 +1,5 @@
 let Request = require('rest-request');
-let restAPI = new Request('URL');
+let restAPI = new Request('https://4663e8b1.ngrok.io/api/v1/');
 
 let API = ""
 
@@ -20,5 +20,11 @@ function tapsAtPlace(place){
 }
 
 function addServing(tap,volume){
-    return restAPI.post("serving/create/")
+    return restAPI.post("serving/create/",{tap:tap,volume:volume})
+}
+
+
+module.exports = {
+    setAPIKey,
+    addServing
 }

@@ -1,6 +1,5 @@
 const flow = require('./utils/flow-meter')
-const googlehome = require('./utils/google-home')
-
+const api = require('./utils/tapit-web-client')
 
 const TAP_1_CHANNEL = 3
 const TAP_2_CHANNEL = 4
@@ -9,11 +8,23 @@ const TAP_3_CHANNEL = 5
 const TAP_CHANNELS = [TAP_1_CHANNEL]
 
 
+const tapID = "5c9f520a82055ce8f9a11c7e"
+
+
+api.setAPIKey("")
+
+
 function initTaps(){
     flow.init(TAP_CHANNELS)
     flow.emitter.on("served",(data) =>{
         console.log(`tap:${data.tap}, volume:${data.volume}`)
-        googlehome.speak(`Kyle just poured ${Math.round(data.volume)}ml from tap ${data.tap}. Fuck Yeah!`)
+        api.addServing(tapID,data.volume)
+            .then(data =>{
+                console.log(data)
+            })
+            .catch(err =>{
+                console.error(err)
+            })
     })
 
     flow.emitter.on("serving",(data) =>{
