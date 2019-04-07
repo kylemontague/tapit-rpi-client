@@ -20,7 +20,7 @@ function tapsAtPlace(place){
 }
 
 function addServing(tap,volume){
-    return restAPI.post("serving/create/",{tap:tap,volume:volume})
+    return restAPI.post("servings/create/",{tap:tap,volume:volume})
 }
 
 
