@@ -12,7 +12,7 @@ const tapID = "5c9f520a82055ce8f9a11c7e"
 
 
 api.setAPIKey("")
-
+api.places().then(data => {console.log(data)})
 
 function initTaps(){
     flow.init(TAP_CHANNELS)

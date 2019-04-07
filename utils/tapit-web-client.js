@@ -26,5 +26,6 @@ function addServing(tap,volume){
 
 module.exports = {
     setAPIKey,
-    addServing
+    addServing,
+    places
 }
