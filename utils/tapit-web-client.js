@@ -1,5 +1,5 @@
 let Request = require('rest-request');
-let restAPI = new Request('https://e1ef6c0c.ngrok.io/api/v1');
+let restAPI = new Request('http://192.168.2.108:8000/api/v1');
 
 let API = ""
 
