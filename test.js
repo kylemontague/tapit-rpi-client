@@ -5,5 +5,5 @@ function readData(){
     console.log(`${tempC} degC`)
 }
 
-setInterval(readData(),1000)
+setInterval(readData,1000)
 
