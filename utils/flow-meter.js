@@ -14,7 +14,7 @@ let ROTATION_VOLUME = 0.2 //10ml
 let TIMEOUT = 2000 // 2 seconds
 
 gpio.on('change', function(channel, value){
-    clearTimeout(TIMERS.channel)
+    clearTimeout(TIMERS[channel])
     TIMERS[channel] = setTimeout(() => {
         console.log(`tap ${channel}`);
         emitter.emit("served",{tap:channel,volume:getVolume(channel)})
