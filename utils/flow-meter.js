@@ -31,7 +31,7 @@ function init(channels = []){
     reset()
 }
 
-function reset(){
+async function reset(){
     //initialize the flow meters. 
     for(channel of TAP_CHANNELS){
         gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
@@ -47,6 +47,13 @@ function reset(){
             })
         await sleep(1000)
     }
+}
+
+
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
 }
 
 /**
