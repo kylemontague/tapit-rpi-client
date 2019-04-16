@@ -8,6 +8,10 @@ const TAP_3_CHANNEL = 15
 
 const TAP_CHANNELS = [TAP_1_CHANNEL,TAP_2_CHANNEL,TAP_3_CHANNEL]
 
+let current_temp = 0
+setTimeout(readData,1000)
+setInterval(readData,1000*60)
+
 
 const tapID = "5c9f520a82055ce8f9a11c7e"
 
@@ -34,10 +38,9 @@ function initTaps(){
     })
 }
 
-async function readData(){
+function readData(){
     console.log('reading temp')
-    let temp = await sensor.readSimpleC(1)
-    return temp
+    current_temp = sensor.readSimpleC(1)
 }
 
 
