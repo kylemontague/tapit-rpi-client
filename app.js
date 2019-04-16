@@ -22,8 +22,8 @@ api.places().then(data => {console.log(data)})
 function initTaps(){
     flow.init(TAP_CHANNELS)
     flow.emitter.on("served",(data) =>{
-        let temp = readData()
-        console.log(`tap:${data.tap}, volume:${data.volume}, temp:${temp}°C`)
+        
+        console.log(`tap:${data.tap}, volume:${data.volume}, temp:${current_temp}°C`)
         api.addServing(tapID,data.volume)
             .then(data =>{
                 console.log(data)
