@@ -1,6 +1,6 @@
 const flow = require('./utils/flow-meter')
 const api = require('./utils/tapit-web-client')
-// const sensor = require('ds18b20-raspi');
+const sensor = require('ds18b20-raspi');
 
 const TAP_1_CHANNEL = 3
 const TAP_2_CHANNEL = 11
