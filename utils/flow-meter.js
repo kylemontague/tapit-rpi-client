@@ -15,7 +15,7 @@ let TIMEOUT = 2000 // 2 seconds
 
 gpio.on('change', function(channel, value){
     clearTimeout(TIMERS.channel)
-    TIMERS.channel = setTimeout(() => {
+    TIMERS[channel] = setTimeout(() => {
         console.log(`tap ${channel}`);
         emitter.emit("served",{tap:channel,volume:getVolume(channel)})
     },TIMEOUT)
@@ -91,15 +91,15 @@ function resetTap(channel){
  * @param {Number} rotations total number of rotations for that tap
  */
 function setTap(channel,rotations = 0){
-    ROTATIONS.channel = rotations
+    ROTATIONS[channel] = rotations
 }
 
 function incrementTap(channel){
-    ROTATIONS.channel += 1
+    ROTATIONS[channel] += 1
 }
 
 function getVolume(channel){
-    return ROTATIONS.channel * ROTATION_VOLUME
+    return ROTATIONS[channel] * ROTATION_VOLUME
 }
 
 module.exports = {
