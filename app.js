@@ -36,7 +36,8 @@ function initTaps(){
 
 async function readData(){
     console.log('reading temp')
-    return await sensor.readSimpleC(1)
+    let temp = await sensor.readSimpleC(1)
+    return temp
 }
 
 
