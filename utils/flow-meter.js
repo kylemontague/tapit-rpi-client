@@ -34,19 +34,18 @@ function init(channels = []){
 function reset(){
     //initialize the flow meters. 
     for(channel of TAP_CHANNELS){
-        console.log('setting up pin:'+channel)
-        await gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
+        gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
             .then(() => {
                 console.log(`${channel} setup`)
-
-                TIMERS.channel = setTimeout(() => {
-                    console.log('init timer:'+channel);
-                  },500)
+                // TIMERS.channel = setTimeout(() => {
+                //     console.log('init timer:'+channel);
+                //   },500)
+                resetTap(channel) // initialize the tap rotation counter
             })
             .catch((err) => {
                 console.error(err.toString())
             })
-        resetTap(channel) // initialize the tap rotation counter
+        await sleep(1000)
     }
 }
 
