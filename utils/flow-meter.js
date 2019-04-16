@@ -35,7 +35,7 @@ function reset(){
     //initialize the flow meters. 
     for(channel of TAP_CHANNELS){
         console.log('setting up pin:'+channel)
-        gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
+        await gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
             .then(() => {
                 console.log(`${channel} setup`)
 
