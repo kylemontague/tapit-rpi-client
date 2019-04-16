@@ -5,21 +5,27 @@ const Monzo = require('monzo-js');
 const monzo = new Monzo(process.env.MONZO_ACCESS_TOKEN)
 const clientId = process.env.MONZO_CLIENT_ID
 const clientSecret = process.env.MONZO_CLIENT_SECRET
+const dedupe_id = "KYLE"+Math.random()
 
 
-Monzo.OAuth.usingClientCredentials(clientId, clientSecret).then(({access_token}) => {
-    monzo.accounts.find(process.env.MONZO_ACCOUNT_ID).then(account => {
 
-      });
 
-      monzo.pots.all().then(pots => {
-        for (const [id, pot] of pots) {
-          console.log(`${pot.name}: ${pot.balance} ${pot.currency} ${pot.id}`);
-        }
-      });
-
-      monzo.feed.createItem(process.env.MONZO_ACCOUNT_ID, 'How was your Pumpkin Pale Ale?', 'https://icon2.kisspng.com/20180426/qsq/kisspng-beer-glasses-computer-icons-drink-glass-of-beer-5ae2499e2cf493.0731664615247794221842.jpg');
-
+Monzo.OAuth.usingClientCredentials(clientId, clientSecret).then(data => {
+    console.log(data);
+    //payMe(process.env.MONZO_ACCOUNT_ID,process.env.MONZO_POT_ID,250,dedupe_id)
 }).catch(err => {
     console.error(err)
 })
+
+
+function payMe(accountID,potID,amount,dedupe_id){
+    monzo.pots.deposit(potID,accountID,amount,dedupe_id).then(data =>{
+        console.log(data)
+    })
+    .catch(err =>{
+        console.error(err)
+        console.log("free beer")
+    })
+
+
+}

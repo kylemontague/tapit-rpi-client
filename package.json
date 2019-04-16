@@ -20,7 +20,7 @@
   "dependencies": {
     "dotenv": "^7.0.0",
     "ds18b20-raspi": "^0.3.3",
-    "monzo-js": "0.0.8",
+    "monzo-js": "git+https://github.com/kylemontague/monzo-js.git",
     "rest-request": "^1.0.12",
     "rpi-gpio": "^2.1.3"
   }
