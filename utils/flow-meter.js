@@ -12,12 +12,17 @@ let TIMERS = {}
 let ROTATIONS = {}
 let ROTATION_VOLUME = 0.22 //10ml
 let TIMEOUT = 2000 // 2 seconds
+let MIN_VOLUME = 30 // 30ml
 
 gpio.on('change', function(channel, value){
     clearTimeout(TIMERS[channel])
     TIMERS[channel] = setTimeout(() => {
-        console.log(`tap ${channel}`);
-        emitter.emit("served",{tap:channel,volume:getVolume(channel)})
+        if(getVolume(channel)>= MIN_VOLUME){
+            console.log(`tap ${channel}`);
+            emitter.emit("served",{tap:channel,volume:getVolume(channel)})
+        }else{
+            resetTap(channel)
+        }
     },TIMEOUT)
     incrementTap(channel)
     emitter.emit("serving",{tap:channel,volume:getVolume(channel)})
@@ -92,6 +97,16 @@ function resetTap(channel){
  */
 function setTap(channel,rotations = 0){
     ROTATIONS[channel] = rotations
+}
+
+/**
+ * 
+ * @param {Number} volume value in milliliters to set the minimum volume to. Default is 30ml
+ */
+function setMinimumVolume(volume){
+    if(volume >= 10){
+        MIN_VOLUME = volume
+    }
 }
 
 function incrementTap(channel){
