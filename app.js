@@ -31,6 +31,7 @@ function initTaps(){
             .catch(err =>{
                 console.error(err)
             })
+        flow.resetTap(data.tap)
     })
 
     flow.emitter.on("serving",(data) =>{
