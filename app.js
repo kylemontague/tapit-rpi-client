@@ -40,8 +40,8 @@ function initTaps(){
 }
 
 function readData(){
-    console.log('reading temp')
     current_temp = sensor.readSimpleC(1)
+    console.log(`Current temp is ${current_temp}°C`)
 }
 
 
