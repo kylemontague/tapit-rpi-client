@@ -10,7 +10,7 @@ const TAP_CHANNELS = [TAP_1_CHANNEL,TAP_2_CHANNEL,TAP_3_CHANNEL]
 
 let current_temp = 0
 setTimeout(readData,1000)
-setInterval(readData,1000*60)
+setInterval(readData,1000*60*5) //check every 5 minutes
 
 
 const tapID = "5c9f520a82055ce8f9a11c7e"
