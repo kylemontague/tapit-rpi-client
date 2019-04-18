@@ -10,7 +10,7 @@ let gpiop = gpio.promise;
 let TAP_CHANNELS = []
 let TIMERS = {}
 let ROTATIONS = {}
-let ROTATION_VOLUME = 0.2 //10ml
+let ROTATION_VOLUME = 0.22 //10ml
 let TIMEOUT = 2000 // 2 seconds
 
 gpio.on('change', function(channel, value){
