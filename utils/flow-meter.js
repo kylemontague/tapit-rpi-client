@@ -18,7 +18,6 @@ gpio.on('change', function(channel, value){
     clearTimeout(TIMERS[channel])
     TIMERS[channel] = setTimeout(() => {
         if(getVolume(channel)>= MIN_VOLUME){
-            console.log(`tap ${channel}`);
             emitter.emit("served",{tap:channel,volume:getVolume(channel)})
         }else{
             resetTap(channel)
@@ -32,21 +31,16 @@ gpio.on('change', function(channel, value){
 
 function init(channels = []){
     TAP_CHANNELS = channels
-    console.log(TAP_CHANNELS)
     reset()
 }
 
 async function reset(){
     //initialize the flow meters. 
-
     for(channel of TAP_CHANNELS){
 
         await gpiop.setup(channel,gpio.DIR_IN,gpio.EDGE_FALLING)
             .then(() => {
                 console.log(`${channel} setup`)
-                // TIMERS.channel = setTimeout(() => {
-                //     console.log('init timer:'+channel);
-                //   },500)
                 resetTap(channel) // initialize the tap rotation counter
             })
             .catch((err) => {
@@ -109,10 +103,15 @@ function setMinimumVolume(volume){
     }
 }
 
+
 function incrementTap(channel){
     ROTATIONS[channel] += 1
 }
 
+/**
+ * 
+ * @param {Number} channel get the volume in milliliters for a specific tap.
+ */
 function getVolume(channel){
     return ROTATIONS[channel] * ROTATION_VOLUME
 }
